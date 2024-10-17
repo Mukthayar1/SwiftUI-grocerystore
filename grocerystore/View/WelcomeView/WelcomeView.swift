@@ -33,12 +33,10 @@ struct WelcomeView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom,20)
                 
-                Button("Go To Next") {
-                    print("hello world")
+                NavigationLink(destination: LoginView()) {
+                    RoundButton(buttontitle: "Sign IN")
                 }
-                .font(.customfont(.semibold, fontSize: 48))
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
+                
                 
                 Spacer().frame(height:60)
             }
@@ -53,5 +51,8 @@ struct WelcomeView: View {
 }
 
 #Preview {
-    WelcomeView()
+    NavigationView {
+        WelcomeView()
+    }
+    
 }
