@@ -11,7 +11,7 @@ import CountryPicker
 struct LoginView: View {
     
     @Environment(\.presentationMode) var mode : Binding<PresentationMode>
-    @State var loginVM = MainViewModal.shared;
+    @ObservedObject var loginVM = MainViewModal.shared;
     
     @State private var isShow: Bool = false
     

@@ -11,7 +11,7 @@ struct Globs {
     
     static let AppName = "Grocery Store";
     static let Base_URL = "https://foodostibackend0324324324.azurewebsites.net/";
-    static let SV_LOGIN = "api/Chef?fcmToken="
+    static let SV_LOGIN = "api/Chef"
    
 //    GOOGLE_API=AIzaSyCAcgEQMvho7rnMg-cV7wLEZjJLoH50ehk
 //    HOME_CHEF_VERIFICATION =https://homechef-verification-dev.foodosti.com/
