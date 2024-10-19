@@ -15,3 +15,17 @@ extension String {
     }
     
 }
+
+// Parsing function
+func parseResponse(response: NSDictionary) -> (status: String?, token: String?, user: UserModel?) {
+    // Extract the status, token, and user dictionary
+    let status = response.value(forKey: "status") as? String
+    let token = response.value(forKey: "token") as? String
+    let userDict = response.value(forKey: "user") as? NSDictionary
+    
+    // Parse the user dictionary if it exists
+    let user = userDict != nil ? UserModel(dict: userDict!) : nil
+    
+    return (status, token, user)
+}
+

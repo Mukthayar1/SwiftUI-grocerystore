@@ -55,10 +55,39 @@ struct SigInView: View {
                             .padding(.vertical, 10)
                             .background(Color.white.cornerRadius(10))
                     }
+                    
+                    NavigationLink {
+                        LoginView()
+                    } label: {
+                        Text("Login with email")
+                            .font(.customfont(.semibold, fontSize: 18))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(minWidth : 0 , maxWidth: .infinity , minHeight : 60 , maxHeight : 60)
+                    .background(Color.primaryApp)
+                    .cornerRadius(15, corner: .allCorners)
+                    .padding(.bottom , 8)
+                    
+                    NavigationLink {
+                        LoginView()
+                    } label: {
+                        Text("Signup with email")
+                            .font(.customfont(.semibold, fontSize: 18))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(minWidth : 0 , maxWidth: .infinity , minHeight : 60 , maxHeight : 60)
+                    .background(Color(hex : "5384dc"))
+                    .cornerRadius(15, corner: .allCorners)
+                    .padding(.bottom , 8)
+
+                    
                     Divider()
                         .padding(.bottom,25)
                     
                     Text("or connect with social media")
+                        .frame(minWidth: 0,maxWidth: .infinity)
                         .font(.customfont(.semibold, fontSize: 14))
                         .multilineTextAlignment(.center)
                         .foregroundColor(.textTitle)
@@ -101,7 +130,7 @@ struct SigInView: View {
             }
             .padding(.horizontal,20)
             .frame(width: .screenWidth , alignment: .leading)
-            .padding(.top , .topInsets + .screenWidth)
+            .padding(.top , .topInsets + .screenWidth * 0.6)
             
             
         }
@@ -119,5 +148,7 @@ struct SigInView: View {
 }
 
 #Preview {
-    SigInView()
+    NavigationView {
+        SigInView()
+    }
 }

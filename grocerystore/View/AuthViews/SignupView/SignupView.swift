@@ -8,10 +8,11 @@
 import SwiftUI
 import CountryPicker
 
-struct LoginView: View {
+struct SignupView: View {
     
     @Environment(\.presentationMode) var mode : Binding<PresentationMode>
-    @ObservedObject var loginVM = MainViewModal.shared;
+    @ObservedObject var mainVm = MainViewModal.shared;
+    
     
     @State private var isShow: Bool = false
     
@@ -29,51 +30,64 @@ struct LoginView: View {
                     .frame(width: 50,height: 50)
                     .padding(.bottom,.screenWidth * 0.1)
                     .padding(.top)
-                Text("Loging")
+                Text("Sign Up")
                     .font(.customfont(.semibold, fontSize: 26))
                     .foregroundColor(.primaryText)
                     .frame(minWidth: 0 , maxWidth: .infinity , alignment: .leading)
                     .padding(.bottom,4)
-                Text("Enter your email and password")
+                Text("Enter your details to continue")
                     .font(.customfont(.semibold, fontSize: 16))
                     .foregroundColor(.secondaryText)
                     .frame(minWidth: 0 , maxWidth: .infinity , alignment: .leading)
                     .padding(.bottom,.screenWidth * 0.12)
                 
-                LineTextField( title: "Email", placholder: "Enter your email address", txt: $loginVM.txtEmail, keyboardType: .emailAddress)
+                LineTextField( title: "User Name", placholder: "Enter your user name", txt: $mainVm.txtUserName)
                     .padding(.bottom, .screenWidth * 0.07)
-                LineSecureField( title: "Password", placholder: "Enter your password", txt: $loginVM.txtPassword, isShowPassword: $isShow)
+                LineTextField( title: "Email", placholder: "Enter your email address", txt: $mainVm.txtEmail, keyboardType: .emailAddress)
+                    .padding(.bottom, .screenWidth * 0.07)
+                LineSecureField( title: "Password", placholder: "Enter your password", txt: $mainVm.txtPassword, isShowPassword: $isShow)
                     .padding(.bottom, .screenWidth * 0.04)
                 
-                Button {
-                    
-                } label: {
-                    Text("Forgot Password?")
+                VStack {
+                    Text("By continue you to agree")
                         .font(.customfont(.medium, fontSize: 14))
-                        .foregroundColor(.primaryText)
+                        .foregroundColor(.secondaryText)
+                        .frame(minWidth: 0,maxWidth: .infinity,alignment: .leading)
+                    HStack{
+                        Text("Terms of Services")
+                            .font(.customfont(.medium, fontSize: 14))
+                            .foregroundColor(.primaryApp)
+                        Text(" and ")
+                            .font(.customfont(.medium, fontSize: 14))
+                            .foregroundColor(.secondaryText)
+                        Text("Privacy Policy")
+                            .font(.customfont(.medium, fontSize: 14))
+                            .foregroundColor(.primaryApp)
+                            .frame(minWidth: 0,maxWidth: .infinity,alignment: .leading)
+                    }
+                    .padding(.bottom, .screenWidth * 0.02)
                 }
-                .frame(minWidth : 0 , maxWidth: .infinity, alignment:.trailing)
-                .padding(.bottom, .screenWidth * 0.02)
                 
-                RoundButton(buttontitle: "Login") {
-                    loginVM.serviceCallLogim()
+               
+
+                
+                RoundButton(buttontitle: "Signup") {
+                    mainVm.serviceCallSignup()
                 }
                 .padding(.bottom, .screenWidth * 0.05)
                 
                 NavigationLink {
-                    SignupView()
+                    LoginView()
                 } label: {
                     HStack{
-                        Text("Don't have an account?")
+                        Text("Already have an account?")
                             .font(.customfont(.semibold, fontSize: 14))
                             .foregroundColor(.primaryText)
-                        Text("Signup")
+                        Text("Login")
                             .font(.customfont(.semibold, fontSize: 14))
                             .foregroundColor(.primaryApp)
                     }
                 }
-                
-                
                 
                 Spacer()
                 
@@ -103,9 +117,9 @@ struct LoginView: View {
             .padding(.horizontal)
             
         }
-        .alert(isPresented: $loginVM.showError){
-            Alert(title: Text(Globs.AppName),message: Text(loginVM.errorMessage),dismissButton: .default(Text("OK"))
-            )}
+        .alert(isPresented: $mainVm.showError){
+            Alert(title: Text(Globs.AppName),message: Text(mainVm.errorMessage),dismissButton: .default(Text("OK"))
+        )}
         .background(Color.white)
         .ignoresSafeArea()
         .navigationTitle("")
@@ -116,7 +130,6 @@ struct LoginView: View {
 
 #Preview {
     NavigationView {
-        LoginView()
+        SignupView()
     }
-    
 }

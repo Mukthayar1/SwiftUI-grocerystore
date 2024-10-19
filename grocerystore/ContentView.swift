@@ -1,16 +1,16 @@
-//
-//  ContentView.swift
-//  grocerystore
-//
-//  Created by Muhammad Mukhtayar on 14/10/2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var mainVm = MainViewModal.shared;
+    
     var body: some View {
         NavigationView{
-            WelcomeView()
+            if mainVm.isUserLoggedIn {
+                MainTabView()
+            }else{
+                WelcomeView()
+            }
         }
     }
 }
