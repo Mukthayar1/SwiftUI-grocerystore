@@ -30,10 +30,10 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Gilroy-Bold</string>
-		<string>Gilroy-Medium</string>
-		<string>Gilroy-Regular</string>
-		<string>Gilroy-SemiBold</string>
+		<string>Gilroy-Bold.ttf</string>
+		<string>Gilroy-Medium.ttf</string>
+		<string>Gilroy-Regular.ttf</string>
+		<string>Gilroy-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -9,7 +9,7 @@ struct ContentView: View {
             if mainVm.isUserLoggedIn {
                 MainTabView()
             }else{
-                WelcomeView()
+                MainTabView()
             }
         }
     }

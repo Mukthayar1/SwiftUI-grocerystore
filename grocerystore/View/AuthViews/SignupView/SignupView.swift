@@ -125,6 +125,9 @@ struct SignupView: View {
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
+//        .onTapGesture {
+//            UIApplication.shared.endEditing(true)
+//        }
     }
 }
 

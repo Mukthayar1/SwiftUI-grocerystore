@@ -19,7 +19,7 @@ class MainViewModal : ObservableObject  {
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
     
-    @Published var isUserLoggedIn: Bool = false
+    @Published var isUserLoggedIn: Bool = true
     @Published var userObject: UserModel = UserModel(dict: [:])
     
     init() {

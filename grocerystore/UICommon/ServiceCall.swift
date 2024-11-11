@@ -33,6 +33,13 @@ class ServiceCall {
             
             
             var request = URLRequest(url: URL(string: path)!,timeoutInterval: 20)
+            
+            if(isToken){
+                
+                //  in future access token will come from auth details of current user
+                request.addValue("lTMEvw34oSRE1JIt0xjU", forHTTPHeaderField: "access_token")
+
+            }
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
             request.httpBody = parameterData as Data
