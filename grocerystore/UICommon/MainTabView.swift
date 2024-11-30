@@ -12,7 +12,6 @@ struct MainTabView: View {
     @ObservedObject var homeVM = HomeViewModal.shared;
     
     func handleChangeTab(_ index: Int) {
-        debugPrint("index",index,homeVM.selectedTab)
         DispatchQueue.main.async {
             withAnimation {
                 homeVM.selectedTab = index
@@ -22,52 +21,55 @@ struct MainTabView: View {
     
     
     var body: some View {
-        VStack{
-            TabView(selection: $homeVM.selectedTab) {
+        ZStack{
+            if homeVM.selectedTab == 0 {
                 HomeView().tag(0)
+            } else if homeVM.selectedTab == 1 {
                 ExploreView().tag(1)
-                HomeView().tag(2)
-                HomeView().tag(3)
+            } else if homeVM.selectedTab == 2 {
+                CartView().tag(2)
+            } else if homeVM.selectedTab == 3 {
+                FavourtiteView().tag(3)
+            } else if homeVM.selectedTab == 4 {
                 HomeView().tag(4)
             }
-            .onAppear {
-                UIScrollView.appearance().isScrollEnabled = false
-            }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .onChange(of: homeVM.selectedTab ) { newValue in
-                debugPrint("selected print==>\(newValue)")
-                homeVM.selectedTab = newValue
-            }
             
-            HStack {
-                CustomTabView(tabViewImage: "store_tab", title: "Shop",isActive: homeVM.selectedTab == 0 ? true : false ,didPress: {handleChangeTab(0)})
+            VStack{
                 
-                CustomTabView(tabViewImage: "explore_tab", title: "Explore",isActive: homeVM.selectedTab == 1 ? true : false,didPress: {handleChangeTab(1)})
+                Spacer()
                 
-                CustomTabView(tabViewImage: "cart_tab", title: "Cart",isActive: homeVM.selectedTab == 2 ? true : false,didPress: {handleChangeTab(2)})
-                
-                CustomTabView(tabViewImage: "fav_tab", title: "Favourite",isActive: homeVM.selectedTab == 3 ? true : false,didPress: {handleChangeTab(3)})
-                
-                CustomTabView(tabViewImage: "account_tab", title: "Account",isActive: homeVM.selectedTab == 4 ? true : false,didPress: {handleChangeTab(4)})
+                HStack {
+                    CustomTabView(tabViewImage: "store_tab", title: "Shop",isActive: homeVM.selectedTab == 0 ? true : false ,didPress: {handleChangeTab(0)})
+                    
+                    CustomTabView(tabViewImage: "explore_tab", title: "Explore",isActive: homeVM.selectedTab == 1 ? true : false,didPress: {handleChangeTab(1)})
+                    
+                    CustomTabView(tabViewImage: "cart_tab", title: "Cart",isActive: homeVM.selectedTab == 2 ? true : false,didPress: {handleChangeTab(2)})
+                    
+                    CustomTabView(tabViewImage: "fav_tab", title: "Favourite",isActive: homeVM.selectedTab == 3 ? true : false,didPress: {handleChangeTab(3)})
+                    
+                    CustomTabView(tabViewImage: "account_tab", title: "Account",isActive: homeVM.selectedTab == 4 ? true : false,didPress: {handleChangeTab(4)})
+                }
+                .padding(.bottom , .bottomInsets)
+                .padding(.top,20)
+                .padding(.horizontal,10)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(color : Color.black.opacity(0.15), radius : 3, x: 0, y: -3)
             }
-            .padding(.bottom , .bottomInsets)
-            .padding(.top,20)
-            .padding(.horizontal,10)
-            .background(Color.white)
-            .cornerRadius(20)
-            .shadow(color : Color.black.opacity(0.15), radius : 3, x: 0, y: -3)
-        }
-        .ignoresSafeArea()
-        .navigationTitle("")
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
-        .onAppear() {
-            homeVM.getHomeData()
+            .ignoresSafeArea()
+            .navigationTitle("")
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
+            .onAppear() {
+                homeVM.getHomeData()
+            }
         }
     }
 }
 
 #Preview {
-    MainTabView()
+    NavigationView{
+        MainTabView()
+    }
 }
 

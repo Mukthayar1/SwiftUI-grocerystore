@@ -46,7 +46,7 @@ struct ProductDetailView: View {
                             .frame(minWidth: 0,maxWidth: .infinity,alignment: .leading)
                         
                         Button{
-                            detailVM.isFav = !detailVM.isFav
+                            detailVM.likeDislikeFvrt()
                         } label: {
                             Image(detailVM.isFav ? "favorite" : "fav")
                                 .resizable()
@@ -121,7 +121,7 @@ struct ProductDetailView: View {
                                 .scaledToFit()
                                 .frame(width: 15,height: 15)
                                 .padding(15)
-                                
+                            
                         }
                         .foregroundColor(Color.primaryText)
                     }
@@ -163,7 +163,7 @@ struct ProductDetailView: View {
                                 .scaledToFit()
                                 .frame(width: 15,height: 15)
                                 .padding(15)
-                                
+                            
                         }
                         .foregroundColor(Color.primaryText)
                     }
@@ -219,7 +219,7 @@ struct ProductDetailView: View {
                                 .scaledToFit()
                                 .frame(width: 15,height: 15)
                                 .padding(15)
-                                
+                            
                         }
                         .foregroundColor(Color.primaryText)
                     }
@@ -233,11 +233,15 @@ struct ProductDetailView: View {
                     
                 }
                 .padding(.horizontal ,20)
-                
-                RoundButton(buttontitle: "Add To Cart"){
-                    
+                if(detailVM.qty < 1){
+                    RoundButton(buttontitle: "Add To Cart"){
+                        withAnimation {
+                            detailVM.AddToCart(isAdd: true)
+                        }
+                        
+                    }
+                    .padding(20)
                 }
-                .padding(20)
                 
             }
             
@@ -274,10 +278,9 @@ struct ProductDetailView: View {
             .padding(.horizontal, 20)
             
         }
-        //        .alert(isPresented: $detailVM.showError, content: {
-        //
-        //            Alert(title: Text(Globs.AppName), message: Text(detailVM.errorMessage)  , dismissButton: .default(Text("Ok"))  )
-        //        })
+        .alert(isPresented: $detailVM.showError, content: {
+            Alert(title: Text(Globs.AppName), message: Text(detailVM.errorMessage)  , dismissButton: .default(Text("Ok"))  )
+        })
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

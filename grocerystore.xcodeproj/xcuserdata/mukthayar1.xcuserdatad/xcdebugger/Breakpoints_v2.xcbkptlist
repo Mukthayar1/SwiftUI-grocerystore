@@ -14,10 +14,40 @@
             filePath = "grocerystore/ProductDetailModal.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "getProductDetail()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8F131C2E-7A8B-44BC-9A11-F3360432B75C - 60a3bd9a3c3f19d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in grocerystore.ProductDetailModal.getProductDetail() -&gt; ()"
+                  moduleName = "grocerystore.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mukthayar1/Desktop/SwiftUI-grocerystore/grocerystore/ProductDetailModal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61">
+               </Location>
+               <Location
+                  uuid = "8F131C2E-7A8B-44BC-9A11-F3360432B75C - 870a3a1186b42b86"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Any) -&gt; grocerystore.NutritionistModal in closure #1 (Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in grocerystore.ProductDetailModal.getProductDetail() -&gt; ()"
+                  moduleName = "grocerystore.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mukthayar1/Desktop/SwiftUI-grocerystore/grocerystore/ProductDetailModal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

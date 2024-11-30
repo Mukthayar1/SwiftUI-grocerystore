@@ -38,7 +38,6 @@ class HomeViewModal : ObservableObject {
                         
                         self.exclusiveOffersProducts = (payLoad.value(forKey: "offer_list") as? NSArray ?? []).map({ obj in
                             let product = ProductModel(dict: obj as! NSDictionary)
-                            print("product====>\(product)")
                             return product
                         })
                         

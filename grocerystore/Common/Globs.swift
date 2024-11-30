@@ -19,6 +19,12 @@ struct Globs {
     
     static let homeData = "\(Base_URL)home"
     static let productDetail = "\(Base_URL)product_detail"
+    static let favoriteList = "\(Base_URL)favorite_list"
+    static let addRemoveFavorite = "\(Base_URL)add_remove_favorite"
+    static let exporeList = "\(Base_URL)explore_category_list"
+    static let exporeListItem = "\(Base_URL)explore_category_items_list"
+
+
 
 
 }

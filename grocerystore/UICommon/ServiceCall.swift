@@ -37,7 +37,7 @@ class ServiceCall {
             if(isToken){
                 
                 //  in future access token will come from auth details of current user
-                request.addValue("lTMEvw34oSRE1JIt0xjU", forHTTPHeaderField: "access_token")
+                request.addValue("WgOyJQeqzC0SJ4fJq7wd", forHTTPHeaderField: "access_token")
 
             }
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -56,12 +56,9 @@ class ServiceCall {
                         do {
                             let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
                             
-                            debugPrint("response: " , jsonDictionary )
-                            
                             DispatchQueue.main.async {
                                 withSuccess(jsonDictionary)
                             }
-                            
                             
                         }
                         catch {

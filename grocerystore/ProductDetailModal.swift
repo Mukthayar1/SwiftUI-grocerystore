@@ -17,7 +17,7 @@ class ProductDetailModal : ObservableObject {
     @Published var isFav : Bool = false
     @Published var isShowDetail : Bool = false
     @Published var isShowNutrition : Bool = false
-    @Published var qty : Int = 1
+    @Published var qty : Int = 0
     
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
@@ -33,11 +33,13 @@ class ProductDetailModal : ObservableObject {
     func AddToCart(isAdd: Bool = true) {
         if(isAdd){
             qty += 1
+            CartViewModal.shared.addOrUpdateItem(pobj)
         }else{
             qty -= 1
             if(qty < 1){
-                qty = 1
+                qty = 0
             }
+            CartViewModal.shared.decreaseQuantity(of: pobj)
         }
     }
     
@@ -45,6 +47,7 @@ class ProductDetailModal : ObservableObject {
         self.pobj = prodObj;
         self.isFav = prodObj.IsFav
         getProductDetail()
+        CartViewModal.shared.getProductDetailQty(productID: self.pobj.id ,qty: &qty)
       }
     
     //GET DATA
@@ -72,6 +75,27 @@ class ProductDetailModal : ObservableObject {
                     self.showError = false;
                     self.errorMessage = "";
                     
+                }else{
+                    self.showError = true
+                    self.errorMessage = "something went wrong"
+                }
+            }
+        } failure: { error in
+            self.showError = true
+            self.errorMessage = error!.localizedDescription
+        }
+    }
+    
+
+    func likeDislikeFvrt() {
+        ServiceCall.post(parameter: ["prod_id":self.pobj.id], path: Globs.addRemoveFavorite , isToken: true) { responseObj in
+            if let response = responseObj as? NSDictionary {
+                if (response.value(forKey: KKey.status) as? String ?? "") == "1" {
+                    self.isFav = !self.isFav
+                    HomeViewModal.shared.getHomeData()
+                    FavouriteViewModal.shared.getFvrtData()
+                    self.showError = false;
+                    self.errorMessage = "";
                 }else{
                     self.showError = true
                     self.errorMessage = "something went wrong"
