@@ -33,6 +33,11 @@ class MainViewModal : ObservableObject  {
 #endif
     }
     
+    func logOut(){
+        Utils.UDSET(data: false, key: Globs.userLogin)
+        isUserLoggedIn = false
+    }
+    
     //MARK : SERVICE-CALL
     
     func serviceCallLogim() {

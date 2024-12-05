@@ -13,7 +13,6 @@ struct FavourtiteView: View {
     
     var body: some View {
         ZStack{
-            
             ScrollView{
                 LazyVStack{
                     ForEach(FVModel.fvrtListArray,id: \.id, content: {
@@ -46,8 +45,6 @@ struct FavourtiteView: View {
                 .padding(.horizontal,20)
                 .padding(.bottom,.bottomInsets+80)
             }
-            
-           
             
         }
         .navigationTitle("")

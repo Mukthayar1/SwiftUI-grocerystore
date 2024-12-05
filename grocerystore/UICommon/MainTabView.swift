@@ -31,7 +31,7 @@ struct MainTabView: View {
             } else if homeVM.selectedTab == 3 {
                 FavourtiteView().tag(3)
             } else if homeVM.selectedTab == 4 {
-                HomeView().tag(4)
+                AccountView().tag(4)
             }
             
             VStack{
